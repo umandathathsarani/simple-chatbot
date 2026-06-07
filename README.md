@@ -17,13 +17,21 @@ Modern businesses require rapid response times for standard customer inquiries. 
 
 Instead of hardcoding responses into the application logic, this system utilizes a decoupled architecture. The conversational rules and bot responses are externalized in a dynamic JSON data store. The Flask backend acts as the brain, intercepting user messages from the frontend, parsing them using Regular Expression (Regex) intent matching, and serving the appropriate automated response based on the dataset.
 
+---
+
 ## 🚀 Key Features
 
 * **Intelligent Intent Matching:** Moves beyond basic exact-string matching by utilizing Python's `re` module. The bot understands varied user inputs, synonyms, and keyword variations (e.g., matching "deliver", "ship", or "track" to the same shipping intent).
+
 * **Decoupled Data Architecture:** Bot responses, intents, and fallback arrays are isolated in a `responses.json` file. This allows non-technical team members to update the bot's dialogue without ever touching or risking the core Python logic.
+
 * **Modern Messaging Interface:** A fully responsive, WhatsApp-style graphical user interface built from scratch with HTML5 and custom CSS Flexbox. It features dynamic chat bubbles, scrolling message containers, and a clean aesthetic.
+
 * **Quick-Reply UI Chips:** Interactive suggestion buttons located above the chat input that allow users to instantly send high-frequency queries with a single click, drastically improving user experience and accessibility.
+
 * **Automated Audit Logging:** The server silently tracks and records all user-bot interactions, appending them with precise timestamps to a local `chat_log.txt` file. This is crucial for managerial review, debugging, and identifying areas where the bot's dataset needs expansion.
+
+---
 
 ## 💻 Technical Stack
 
@@ -32,6 +40,8 @@ Instead of hardcoding responses into the application logic, this system utilizes
 * **Frontend Languages:** Vanilla JavaScript (Fetch API, DOM manipulation), HTML5, CSS3
 * **Data Storage:** JSON (Rule Configuration), TXT (Persistent Audit Logs)
 * **Version Control:** Git & GitHub
+
+---
 
 ## 📂 System Architecture
 
@@ -44,8 +54,10 @@ simple-chatbot/
 ├── app.py                   
 ├── responses.json           
 ├── chat_log.txt             
-└── README.md              # Project documentation
+└── README.md             
 ```
+
+---
 
 ## 🛠️ Installation & Local Setup
 
@@ -69,6 +81,8 @@ python app.py
 
 4. Access the web interface:
 Once the server is active, open any modern web browser and navigate to the local host address provided in the terminal
+
+---
 
 ## 📄 License
 Copyright (c) 2026 Mummullage Binuri Umanda Thathsarani
