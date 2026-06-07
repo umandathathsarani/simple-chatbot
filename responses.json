@@ -1,0 +1,25 @@
+{
+  "rules": {
+    "shipping": [
+      "Standard shipping takes 3-5 business days.",
+      "Express shipping options take 1-2 business days."
+    ],
+    "refund": [
+      "You can request a full refund within 30 days of purchase.",
+      "Please email support@example.com to submit a refund claim."
+    ],
+    "hours": [
+      "Our customer support team is active from 9 AM to 6 PM, Monday through Friday."
+    ],
+    "hello": [
+      "Hello! Welcome to Customer Support. How can I assist you today?"
+    ],
+    "bye": [
+      "Thank you for reaching out. Have a wonderful day!"
+    ]
+  },
+  "fallback": [
+    "I am sorry, I couldn't find a direct answer for that issue. Let me connect you to an agent.",
+    "Could you please rephrase your customer support query?"
+  ]
+}
