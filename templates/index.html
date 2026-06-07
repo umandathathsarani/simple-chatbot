@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 40px;
+        }
+        .chat-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+        }
+        .chat-display {
+            height: 350px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .msg {
+            margin: 12px 0;
+            line-height: 1.4;
+        }
+        .user-msg {
+            text-align: right;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        .bot-msg {
+            text-align: left;
+            color: #202124;
+        }
+        .interactive-area {
+            display: flex;
+            gap: 10px;
+        }
+        .interactive-area input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .interactive-area button {
+            padding: 12px 24px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-wrapper">
+        <h2>Customer Support Chatbot</h2>
+        <div class="chat-display" id="chat-display"></div>
+        <div class="interactive-area">
+            <input type="text" id="user-query" placeholder="Ask about shipping, refunds, or operating hours...">
+            <button onclick="handleSend()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function handleSend() {
+            const inputElement = document.getElementById("user-query");
+            const queryText = inputElement.value.trim();
+            if (!queryText) return;
+
+            renderMessage(queryText, "user-msg");
+            inputElement.value = "";
+
+            fetch("/get_response", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: queryText })
+            })
+            .then(response => response.json())
+            .then(data => {
+                renderMessage(data.response, "bot-msg");
+            });
+        }
+
+        function renderMessage(text, className) {
+            const displayZone = document.getElementById("chat-display");
+            const element = document.createElement("div");
+            element.className = `msg ${className}`;
+            element.innerText = text;
+            displayZone.appendChild(element);
+            displayZone.scrollTop = displayZone.scrollHeight;
+        }
+    </script>
+
+</body>
+</html>
