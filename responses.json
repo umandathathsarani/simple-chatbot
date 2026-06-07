@@ -1,20 +1,20 @@
 {
   "rules": {
-    "shipping": [
+    "ship|deliver|track": [
       "Standard shipping takes 3-5 business days.",
       "Express shipping options take 1-2 business days."
     ],
-    "refund": [
+    "refund|return|money back": [
       "You can request a full refund within 30 days of purchase.",
       "Please email support@example.com to submit a refund claim."
     ],
-    "hours": [
+    "hour|open|close|time": [
       "Our customer support team is active from 9 AM to 6 PM, Monday through Friday."
     ],
-    "hello": [
+    "hello|hi|hey|greetings": [
       "Hello! Welcome to Customer Support. How can I assist you today?"
     ],
-    "bye": [
+    "bye|goodbye|exit|quit": [
       "Thank you for reaching out. Have a wonderful day!"
     ]
   },
