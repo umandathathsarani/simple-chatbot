@@ -1,5 +1,6 @@
 import json
 import random
+import re
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify
 
@@ -11,7 +12,6 @@ def load_support_rules():
 
 def log_chat(user_message, bot_response):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
     with open("chat_log.txt", "a") as log_file:
         log_file.write(f"[{timestamp}] User: {user_message}\n")
         log_file.write(f"[{timestamp}] Bot: {bot_response}\n")
@@ -31,12 +31,12 @@ def get_response():
     fallback = data.get("fallback", [])
     
     bot_reply = random.choice(fallback)
-
-    for keyword, responses in rules.items():
-        if keyword in user_message:
+    
+    for pattern, responses in rules.items():
+        if re.search(pattern, user_message):
             bot_reply = random.choice(responses)
-            break 
-        
+            break
+            
     log_chat(user_message, bot_reply)
             
     return jsonify({"response": bot_reply})
